@@ -49,3 +49,7 @@ setx PATH "%PATH%;C:\Users\mauricio.cunha\AppData\Local\Programs\Git\cmd" - depe
 $env:Path += ";C:\Users\mauricio.cunha\AppData\Local\Programs\Git\cmd"
 git --version
 git init
+git add .
+git commit -m "projeto SpaceSpectacle"
+git remote set-url origin https://github.com/devmauriciocunha/SpaceSpectacle.git
+git push origin main

@@ -54,9 +54,31 @@ git commit -m "projeto SpaceSpectacle"
 git remote set-url origin https://github.com/devmauriciocunha/SpaceSpectacle.git
 git push origin main
 
-
 caso vá os arquivos que não é para ir:
 git rm -r --cached .
 git add .
 git commit -m "Reaplicando .gitignore"
 git push origin main
+
+
+-----------------------------------------------------------------------------------------------
+
+Criando o primeiro APP:
+python manage.py startapp [nome do app]
+Agora precisamos mostrar para o projeto que essa pasta [app] que foi criada faz parte do app
+settings.py> dentro do código: 
+INSTALLED_APPS = [
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    '[nome do projeto]',
+]
+
+para ver se foi instalado: python manage.py renserver
+Como ver se esta funcionando?
+views.py >>> tem a responsabilidade de cuidar do que será exibido em cada página e qual conteúdo essa página irá ter
+
+

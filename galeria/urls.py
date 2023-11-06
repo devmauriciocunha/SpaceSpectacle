@@ -4,7 +4,7 @@ from .views import imagem
 #Vamos primeiro criar uma lista
 
 urlpatterns = [
-    path('', index),
-    path('imagem.html/', imagem, name='imagem'),
+    path('', index, name='index'),
+    path('imagem/', imagem, name='imagem'),
 ]
 

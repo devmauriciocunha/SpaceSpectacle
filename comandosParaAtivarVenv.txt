@@ -82,3 +82,15 @@ Como ver se esta funcionando?
 views.py >>> tem a responsabilidade de cuidar do que será exibido em cada página e qual conteúdo essa página irá ter
 
 
+------------------------------------------------------------------------------------------------------------------
+incluir no banco pelo shell:
+python manage.py shell 
+from galeria.models import Fotografia
+foto = Fotografia(nome="Nebulosa de Carina", legenda="webbtelescope.org / NASA/ James Webb", foto="carina-nebula.png")
+ foto.save()
+
+
+--------------------------------------------------------------------------------------------------------------------
+Toda vez que fizer alteração no meu banco (models.py) usar o comando no terminal venv:
+python manage.py makemigrations
+python manage.py migrate  

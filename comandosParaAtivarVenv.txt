@@ -55,10 +55,10 @@ git remote set-url origin https://github.com/devmauriciocunha/SpaceSpectacle.git
 git push origin main
 
 caso vá os arquivos que não é para ir:
-git rm -r --cached .
-git add .
-git commit -m "Reaplicando .gitignore"
+git rm --cached .gitignore
+git commit -m "Removendo o arquivo .gitignore do rastreamento"
 git push origin main
+
 
 
 -----------------------------------------------------------------------------------------------

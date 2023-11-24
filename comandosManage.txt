@@ -1,2 +1,0 @@
- startapp - pedaço da aplicação que tem a funcionalidade que faz algo
- startproject - coleção de todas as configurações que a gente tem de uma determinada aplicação

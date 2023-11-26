@@ -382,3 +382,11 @@ table {
     border: 2px solid #7B78E5;
     cursor: pointer;
 }
+
+.custom-alert {
+    background-color: #007bff; /* Um tom de azul claro */
+    color: white; /* Texto branco para contraste */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Sombra leve para destaque */
+    padding: 10px; /* Almofada interna para o alerta */
+    border-radius: 5px; /* Borda arredondada */
+}

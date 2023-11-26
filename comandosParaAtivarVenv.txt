@@ -94,3 +94,11 @@ foto = Fotografia(nome="Nebulosa de Carina", legenda="webbtelescope.org / NASA/ 
 Toda vez que fizer alteração no meu banco (models.py) usar o comando no terminal venv:
 python manage.py makemigrations
 python manage.py migrate  
+
+-------------------------------------------------------------------------------------------------------------------
+Criando novos apps:
+App usuários(como faz abaixo):
+python manage.py startapp usuarios
+
+depois desse comando ir  em: setup\settings.py
+em INSTALLED_APPS pôr "usuarios.apps.UsuariosConfig"

@@ -1,6 +1,6 @@
 from django.urls import path
-from galeria.views import index, imagem, buscar
-from .views import imagem
+from apps.galeria.views import index, imagem, buscar
+
 #Vamos primeiro criar uma lista
 
 urlpatterns = [

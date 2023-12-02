@@ -26,8 +26,12 @@
                 <a href="{% url 'login'%}"><img src="{% static "assets/ícones/1x/login.png" %}"> Login</a>
                 <a href="{% url 'cadastro' %}"><img src="{% static "assets/ícones/1x/cadastro.png" %}"> Cadastro</a>
                 <a href="{% url 'nova_imagem' %}"><img src="{% static "assets/ícones/1x/adicionar-imagem.png" %}"> Nova Imagem</a>
-                <a href="{% url 'editar_imagem'%}"><img src="{% static "assets/ícones/1x/editar-imagem.png" %}"> Editar Imagem</a>
-                <a href="{% url 'deletar_imagem'%}"><img src="{% static "assets/ícones/1x/lixeira.png" %}"> Deletar Imagem</a>
+                {% if fotografia.id %}
+                    <a href="{% url 'editar_imagem' fotografia.id %}">
+                        <img src="{% static "assets/ícones/1x/editar-imagem.png" %}">
+                        Editar Imagem
+                    </a>
+                {% endif %}
                 <a href="{% url 'logout' %}"><img src="{% static '/assets/ícones/1x/logout.png' %}"> Logout</a>
             </nav>
         </section>

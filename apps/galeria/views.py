@@ -1,7 +1,8 @@
 from django.shortcuts import render, get_object_or_404, redirect
-
+from django.http import Http404
 from apps.galeria.models import Fotografia
 from apps.galeria.forms import FotografiaForms
+import unicodedata
 
 from django.contrib import messages
 
@@ -29,7 +30,7 @@ def buscar(request):
         if nome_a_buscar:
             fotografias = fotografias.filter(nome__icontains=nome_a_buscar)
 
-    return render(request, "galeria/buscar.html", {"cards": fotografias})
+    return render(request, "galeria/index.html", {"cards": fotografias})
 
 def nova_imagem(request):
     if not request.user.is_authenticated:
@@ -69,3 +70,19 @@ def deletar_imagem(request, foto_id):
     fotografia.delete()
     messages.success(request, 'Deleção feita com sucesso!')
     return redirect('index')
+
+
+def filtro(request, categoria):
+    # Validação da Categoria
+    categorias_validas = [opcao[0] for opcao in Fotografia.OPCOES_CATEGORIA]
+    if categoria.upper() not in categorias_validas:
+        raise Http404("Categoria não encontrada")
+
+    # Filtragem de fotografias (insensível a maiúsculas/minúsculas)
+    categoria_normalizada = unicodedata.normalize('NFKD', categoria).encode('ASCII', 'ignore').decode('ASCII')
+    fotografias = Fotografia.objects.order_by("data_fotografia").filter(publicada=True, categoria__iexact=categoria_normalizada)
+    # Verificação de fotografias vazias
+    if not fotografias:
+        messages.info(request, "Nenhuma fotografia encontrada para a categoria selecionada.")
+
+    return render(request, 'galeria/index.html', {"cards": fotografias})

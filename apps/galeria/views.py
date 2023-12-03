@@ -3,6 +3,8 @@ from django.http import Http404
 from apps.galeria.models import Fotografia
 from apps.galeria.forms import FotografiaForms
 import unicodedata
+from unidecode import unidecode
+from django.utils.text import slugify
 
 from django.contrib import messages
 
@@ -71,7 +73,6 @@ def deletar_imagem(request, foto_id):
     messages.success(request, 'Deleção feita com sucesso!')
     return redirect('index')
 
-
 def filtro(request, categoria):
     # Validação da Categoria
     categorias_validas = [opcao[0] for opcao in Fotografia.OPCOES_CATEGORIA]
@@ -79,10 +80,13 @@ def filtro(request, categoria):
         raise Http404("Categoria não encontrada")
 
     # Filtragem de fotografias (insensível a maiúsculas/minúsculas)
-    categoria_normalizada = unicodedata.normalize('NFKD', categoria).encode('ASCII', 'ignore').decode('ASCII')
-    fotografias = Fotografia.objects.order_by("data_fotografia").filter(publicada=True, categoria__iexact=categoria_normalizada)
+    fotografias = Fotografia.objects.order_by("data_fotografia").filter(publicada=True, categoria__iexact=categoria)
+
     # Verificação de fotografias vazias
     if not fotografias:
         messages.info(request, "Nenhuma fotografia encontrada para a categoria selecionada.")
 
     return render(request, 'galeria/index.html', {"cards": fotografias})
+
+
+

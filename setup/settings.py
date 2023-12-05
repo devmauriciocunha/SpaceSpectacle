@@ -28,7 +28,7 @@ SECRET_KEY = str(os.getenv('SECRET_KEY'))
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["spacespectacle-dev-jnsp.2.us-1.fl0.io", "localhost"]
 
 
 # Application definition
@@ -149,3 +149,11 @@ MESSAGE_TAGS = {
     messages.SUCCESS: 'success'
 }
 
+CSRF_TRUSTED_ORIGINS = [
+    "https://*spacespectacle-dev-jnsp.2.us-1.fl0.io",
+    "https://*.127.0.0.1",
+]
+ 
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
+CORS_ALLOW_CREDENTIALS = True

@@ -28,7 +28,7 @@ SECRET_KEY = str(os.getenv('SECRET_KEY'))
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["spacespectacle-dev-jnsp.2.us-1.fl0.io", "localhost"]
 
 
 # Application definition
